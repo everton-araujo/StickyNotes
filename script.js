@@ -12,6 +12,8 @@ while (notesQuantity--) {
   var node0 = document.createElement("div");
   var node1 = document.createElement("h1");
 
+  node0.setAttribute('id', notesQuantity);
+  
   node1.innerHTML = note;
   
   node1.setAttribute("style", styleAttributes);
@@ -23,6 +25,16 @@ while (notesQuantity--) {
   
   container2.insertAdjacentElement("beforeend", node0);
 }
+
+var i = 0
+addEventListener('dblclick', function() {
+  console.log(1, document.getElementById(i));
+  console.log(2, i);
+  document.getElementById(i).remove();
+  i++
+
+  localStorage.removeItem(i)
+});
 
 xIcon.addEventListener("click", function(){
   typeNote();
@@ -45,7 +57,7 @@ function createNote(){
 
   node1.innerHTML = noteText;
   
-  localStorage.setItem(Object.keys(localStorage).length + 1, node1.outerHTML);
+  localStorage.setItem(Object.keys(localStorage).length, node1.outerHTML);
   
   node1.setAttribute("style", styleAttributes);
   node1.style.margin = margin();
