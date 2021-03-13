@@ -8,7 +8,7 @@ How to use it
 
 Functionalities added
 - localStorage 
-- random color generation
+- Random color generation
 
 TODO 
 - Fix double click to delete the sticky note
