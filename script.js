@@ -2,31 +2,13 @@ var container2 = document.getElementsByClassName("container2")[0];
 var container3 = document.getElementsByClassName("container3")[0];
 var checkIcon = document.getElementById("check-icon");
 var xIcon = document.getElementById("x-icon");
-
-xIcon.addEventListener("click", function(){
-  typeNote();
-});
-
-checkIcon.addEventListener("click", function(){
-  createNote();
-});
-
 var styleAttributes = "width:250px; height:250px; font-size:26px; padding:25px; margin-top:10px; overflow-wrap: break-word; box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75)"
-
-function typeNote(){
-  container3.style.display == 'none' 
-    ? container3.style.display = 'block' 
-    : container3.style.display = 'none'
-}
-
 var values = [];
-var keys = Object.keys(localStorage);
-var i = keys.length;
+var localStorageKeys = Object.keys(localStorage);
+var notesQuantity = localStorageKeys.length;
 
-while (i--) {
-  var note = localStorage.getItem(keys[i]);
-
-  console.log();
+while (notesQuantity--) {
+  var note = localStorage.getItem(localStorageKeys[notesQuantity]);
 
   var node0 = document.createElement("div");
   var node1 = document.createElement("h1");
@@ -41,6 +23,20 @@ while (i--) {
   node0.appendChild(node1);
 
   container2.insertAdjacentElement("beforeend", node0);
+}
+
+xIcon.addEventListener("click", function(){
+  typeNote();
+});
+
+checkIcon.addEventListener("click", function(){
+  createNote();
+});
+
+function typeNote(){
+  container3.style.display == 'none' 
+    ? container3.style.display = 'block' 
+    : container3.style.display = 'none'
 }
 
 function createNote(){
@@ -78,19 +74,19 @@ function createNote(){
 }
 
 function margin(){
-  var random_margin = ["-5px","1px", "5px", "10px","15px","20px"];
+  var randomMargin = ["-5px","1px", "5px", "10px","15px","20px"];
   
-  return random_margin[Math.floor(Math.random() * random_margin.length)];
+  return randomMargin[Math.floor(Math.random() * randomMargin.length)];
 }
 
 function rotate(){
-  var random_degree = ["rotate(3deg)","rotate(1deg)","rotate(-1deg)","rotate(-3deg)","rotate(-5deg)", "rotate(-10deg)"];
+  var randomDegree = ["rotate(3deg)","rotate(1deg)","rotate(-1deg)","rotate(-3deg)","rotate(-5deg)", "rotate(-10deg)"];
   
-  return random_degree[Math.floor(Math.random() * random_degree.length)];
+  return randomDegree[Math.floor(Math.random() * randomDegree.length)];
 }
 
 function generateColor(){
-  var color = new Array();
+  var randomColor = new Array();
 
   for (index = 0; index < 6; index++ ) {
     var value = Math.floor(Math.random() * 16);
@@ -116,16 +112,15 @@ function generateColor(){
         break;
     }
 
-    color.push(value);
+    randomColor.push(value);
   }
 
-  return String('#' + color.join(''));
+  return String('#' + randomColor.join(''));
 
   //** Prefixed colors **//
 
-  // var random_colors = ["#ff3de8", "#c2ff3d","#3dc2ff","#04e022","#bc83e6","#ebb328"];
-
+  // var prefixedColor = ["#ff3de8", "#c2ff3d","#3dc2ff","#04e022","#bc83e6","#ebb328"];
   // var index = Math.floor(Math.random() * 6);
 
-  // return random_colors[index];
+  // return prefixedColor[index];
 }
