@@ -3,7 +3,6 @@ var container3 = document.getElementsByClassName("container3")[0];
 var checkIcon = document.getElementById("check-icon");
 var xIcon = document.getElementById("x-icon");
 var styleAttributes = "width:250px; height:250px; font-size:26px; padding:25px; margin-top:10px; overflow-wrap: break-word; box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75)"
-var values = [];
 var localStorageKeys = Object.keys(localStorage);
 var notesQuantity = localStorageKeys.length;
 
@@ -14,14 +13,14 @@ while (notesQuantity--) {
   var node1 = document.createElement("h1");
 
   node1.innerHTML = note;
-
+  
   node1.setAttribute("style", styleAttributes);
   node1.style.background = generateColor();
   node1.style.margin = margin();
   node1.style.transform = rotate();
-
+  
   node0.appendChild(node1);
-
+  
   container2.insertAdjacentElement("beforeend", node0);
 }
 
@@ -43,13 +42,12 @@ function createNote(){
   var noteText = document.getElementById("note-text").value;
   var node0 = document.createElement("div");
   var node1 = document.createElement("h1");
-  
+
   node1.innerHTML = noteText;
   
   localStorage.setItem(Object.keys(localStorage).length + 1, node1.outerHTML);
   
   node1.setAttribute("style", styleAttributes);
-  
   node1.style.margin = margin();
   node1.style.transform = rotate();
   node1.style.background = generateColor();
@@ -57,14 +55,6 @@ function createNote(){
   node0.appendChild(node1);
   
   container2.insertAdjacentElement("beforeend", node0);
-
-  node0.addEventListener("mouseenter", function() {
-    node0.style.transform = "scale(1.1)";
-  });
-
-  node0.addEventListener("mouseleave", function() {
-    node0.style.transform = "scale(1)";
-  });
 
   node0.addEventListener("dblclick", function() {
     node0.remove();
